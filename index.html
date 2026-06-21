@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff0f5">
+<title>Happy Birthday My Curly Girl 🌸</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rose:#be4167;
+  --rose-2:#ee8faa;
+  --rose-soft:#fff0f5;
+  --pink:#ffd6e2;
+  --cream:#fffaf7;
+  --gold:#c69c56;
+  --ink:#291018;
+  --muted:#7d5966;
+  --glass:rgba(255,255,255,.72);
+  --shadow:0 26px 70px rgba(82,23,45,.20);
+  --radius:28px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family: Georgia, 'Times New Roman', serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255,214,226,.9), transparent 34rem),
+    radial-gradient(circle at 90% 10%, rgba(255,246,218,.9), transparent 28rem),
+    linear-gradient(180deg,#fff7fa 0%,#fff 42%,#fff7f1 100%);
+  overflow-x:hidden;
+}
+html,body,a,button,.gallery-card,.btn,.close,.prev,.next{
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34'%3E%3Ctext y='27' font-size='27'%3E%F0%9F%8C%B9%3C/text%3E%3C/svg%3E") 8 27, auto;
+}
+a:hover,button:hover,.gallery-card:hover,.btn:hover{
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' viewBox='0 0 38 38'%3E%3Ctext y='30' font-size='30'%3E%F0%9F%8C%B9%3C/text%3E%3C/svg%3E") 8 30, pointer;
+}
+body.no-scroll{overflow:hidden}
+::selection{background:rgba(190,65,103,.22);color:#7d1236}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1160px,92vw);margin-inline:auto}
+.pill{
+  display:inline-flex;align-items:center;gap:.55rem;padding:.65rem 1rem;border:1px solid rgba(190,65,103,.18);
+  border-radius:999px;background:rgba(255,255,255,.7);backdrop-filter:blur(16px);color:var(--rose);font-size:.78rem;
+  letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+}
+.title{font-size:clamp(2.4rem,6vw,6rem);line-height:.92;letter-spacing:-.06em}
+.script{font-family:'Brush Script MT','Segoe Script',cursive;font-weight:400;color:var(--rose)}
+.lead{font-family:Arial, sans-serif;color:var(--muted);font-size:clamp(1rem,2.2vw,1.18rem);line-height:1.8}
+.btn{
+  border:none;border-radius:999px;padding:1rem 1.35rem;background:linear-gradient(135deg,var(--rose),#8b2448);
+  color:#fff;box-shadow:0 18px 40px rgba(190,65,103,.28);cursor:pointer;font-family:Arial,sans-serif;font-weight:800;
+  letter-spacing:.02em;transition:.25s transform,.25s box-shadow;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 22px 48px rgba(190,65,103,.34)}
+.btn.secondary{background:rgba(255,255,255,.75);color:var(--rose);border:1px solid rgba(190,65,103,.20);box-shadow:none}
+
+/* Decorative background */
+.petals{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.petal{position:absolute;top:-40px;opacity:0;animation:fall linear infinite;font-size:18px}
+@keyframes fall{0%{transform:translate3d(0,-20px,0) rotate(0deg);opacity:0}10%{opacity:.8}90%{opacity:.45}100%{transform:translate3d(var(--drift),105vh,0) rotate(520deg);opacity:0}}
+.orb{position:fixed;border-radius:50%;filter:blur(3px);opacity:.58;pointer-events:none;z-index:0}
+.orb.one{width:260px;height:260px;background:#ffd7e5;left:-110px;top:14vh}
+.orb.two{width:320px;height:320px;background:#fff0b8;right:-160px;top:36vh}
+.orb.three{width:220px;height:220px;background:#d9f6dc;right:18vw;bottom:-120px}
+
+/* Navbar */
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:20;width:min(860px,92vw)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:.7rem .8rem;border:1px solid rgba(255,255,255,.65);border-radius:999px;background:rgba(255,255,255,.70);backdrop-filter:blur(22px);box-shadow:0 18px 45px rgba(117,52,73,.12)}
+.logo{display:flex;align-items:center;gap:.55rem;font-weight:900;color:var(--rose);font-family:Arial,sans-serif}
+.links{display:flex;gap:.35rem;font-family:Arial,sans-serif;font-size:.85rem}
+.links a{padding:.62rem .85rem;border-radius:999px;color:#774457}
+.links a:hover{background:var(--rose-soft);color:var(--rose)}
+
+/* Hero */
+.hero{min-height:100svh;display:grid;place-items:center;position:relative;overflow:hidden;padding:7rem 0 4rem;z-index:2}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,250,247,.98) 0%,rgba(255,250,247,.88) 40%,rgba(255,250,247,.30) 100%);z-index:-1}
+.hero-bg{position:absolute;inset:0;background:url('assets/images/hero-wide.jpg') center/cover no-repeat;z-index:-2;transform:scale(1.03);filter:saturate(1.02)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+.hero-copy{padding-top:1rem}
+.hero-copy h1{margin:.9rem 0 1rem}
+.hero-copy .lead{max-width:590px}
+.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.8rem}
+.date-card{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center;margin-top:1.6rem;padding:1rem;border-radius:22px;background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.72);box-shadow:0 14px 35px rgba(117,52,73,.09);max-width:470px}
+.date-card strong{font:900 1.6rem Arial,sans-serif;color:var(--rose)}
+.date-card span{font:600 .9rem Arial,sans-serif;color:var(--muted)}
+.hero-photo-wrap{position:relative;justify-self:center}
+.hero-photo{width:min(420px,82vw);aspect-ratio:3/4;border-radius:36px;overflow:hidden;box-shadow:var(--shadow);border:10px solid rgba(255,255,255,.72);transform:rotate(1.8deg)}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.float-card{position:absolute;left:-32px;bottom:34px;background:rgba(255,255,255,.82);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.8);border-radius:22px;padding:1rem 1.1rem;box-shadow:0 18px 44px rgba(117,52,73,.15);font-family:Arial,sans-serif;max-width:220px}
+.float-card b{color:var(--rose)}
+.float-heart{position:absolute;right:-22px;top:56px;font-size:3rem;animation:pulse 2.8s ease-in-out infinite;filter:drop-shadow(0 12px 14px rgba(190,65,103,.2))}
+@keyframes pulse{50%{transform:scale(1.08) rotate(5deg)}}
+
+/* Sections */
+.section{position:relative;z-index:2;padding:clamp(4rem,8vw,7.5rem) 0}
+.section-head{text-align:center;max-width:780px;margin:0 auto 2.5rem}
+.section-head h2{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1;letter-spacing:-.05em;margin:.8rem 0}
+.section-head p{margin-inline:auto}
+
+/* Letter */
+.letter-section{background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,240,245,.75))}
+.letter-card{display:grid;grid-template-columns:.8fr 1.2fr;gap:2rem;align-items:stretch;background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.85);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.letter-photo{min-height:460px;background:url('assets/images/photo-06.jpg') center/cover no-repeat}
+.letter-text{padding:clamp(1.6rem,4vw,3rem)}
+.letter-text h2{font-size:clamp(2.2rem,5vw,4.3rem);line-height:.95;letter-spacing:-.05em;margin:.8rem 0 1.2rem}
+.letter-paper{font-family:Arial,sans-serif;color:#654051;line-height:1.9;font-size:1.02rem}
+.signature{font-family:'Brush Script MT','Segoe Script',cursive;color:var(--rose);font-size:2.4rem;margin-top:1.2rem}
+
+/* Five love letters */
+.letters-wrap{display:grid;gap:1.2rem}
+.letters-hero{
+  position:relative;display:grid;grid-template-columns:.95fr 1.05fr;gap:1.3rem;align-items:stretch;
+  padding:clamp(1rem,2vw,1.3rem);border-radius:38px;background:rgba(255,255,255,.70);
+  border:1px solid rgba(255,255,255,.86);box-shadow:var(--shadow);overflow:hidden;
+}
+.letters-hero::before{content:"💌";position:absolute;right:26px;top:14px;font-size:7rem;opacity:.09;transform:rotate(-10deg)}
+.letters-photo{min-height:500px;border-radius:30px;overflow:hidden;box-shadow:0 18px 42px rgba(92,34,54,.15);border:8px solid rgba(255,255,255,.78)}
+.letters-photo img{width:100%;height:100%;object-fit:cover}
+.letters-copy{padding:clamp(1.3rem,3vw,2.6rem);align-self:center;position:relative;z-index:1}
+.letters-copy h2{font-size:clamp(2.25rem,5vw,4.6rem);line-height:.94;letter-spacing:-.06em;margin:.8rem 0 1rem}
+.letters-copy p{font-family:Arial,sans-serif;color:#654051;line-height:1.85;font-size:1.03rem}
+.letter-hint{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.2rem}
+.letter-hint span{font:900 .78rem Arial,sans-serif;color:#9d2f58;border-radius:999px;padding:.55rem .7rem;background:rgba(255,240,245,.88);border:1px solid rgba(190,65,103,.15)}
+.five-letters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.15rem;margin-top:1rem;align-items:stretch}
+.love-letter{
+  position:relative;min-height:330px;padding:1.25rem;border:none;text-align:left;border-radius:28px;overflow:hidden;
+  background:linear-gradient(160deg,rgba(255,255,255,.86),rgba(255,238,244,.78));
+  border:1px solid rgba(255,255,255,.9);box-shadow:0 18px 45px rgba(92,34,54,.12);
+  transition:.3s transform,.3s box-shadow;isolation:isolate;
+}
+.love-letter::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.25),rgba(255,255,255,.05)),var(--bg);background-size:cover;background-position:center;opacity:.18;z-index:-2;transition:.3s opacity,.3s transform}
+.love-letter::after{content:"";position:absolute;right:-28px;bottom:-28px;width:100px;height:100px;border-radius:50%;background:rgba(190,65,103,.12);z-index:-1}
+.love-letter:hover{transform:translateY(-8px) rotate(var(--tilt));box-shadow:0 26px 60px rgba(92,34,54,.18)}
+.love-letter:hover::before{opacity:.26;transform:scale(1.06)}
+.letter-number{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--rose);color:#fff;font:900 .9rem Arial,sans-serif;box-shadow:0 10px 24px rgba(190,65,103,.24)}
+.letter-stamp{position:absolute;right:16px;top:16px;font-size:1.65rem;filter:drop-shadow(0 8px 10px rgba(190,65,103,.16))}
+.love-letter h3{font-family:Arial,sans-serif;font-size:1.05rem;margin:1rem 0 .65rem;color:#401424}
+.love-letter p{font-family:Arial,sans-serif;color:#6d4556;line-height:1.72;font-size:.93rem}
+.love-letter .mini-sign{display:block;margin-top:1rem;color:var(--rose);font-family:'Brush Script MT','Segoe Script',cursive;font-size:1.55rem}
+
+.sinhala-letter{font-family:'Noto Sans Sinhala','Iskoola Pota','Nirmala UI',Arial,sans-serif;text-align:left}
+.sinhala-letter h3{font-family:'Noto Sans Sinhala','Iskoola Pota','Nirmala UI',Arial,sans-serif;font-size:1.1rem;line-height:1.55;color:#3e1022}
+.sinhala-letter p{font-family:'Noto Sans Sinhala','Iskoola Pota','Nirmala UI',Arial,sans-serif;font-size:.95rem;line-height:1.92;color:#61354a}
+.sinhala-letter.featured-letter{grid-column:1/-1;min-height:260px;background:linear-gradient(135deg,rgba(255,255,255,.90),rgba(255,241,246,.94));border-color:rgba(190,65,103,.20)}
+.sinhala-letter.featured-letter p{font-size:1rem;columns:2;column-gap:2rem}
+
+@media (max-width:1100px){.five-letters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:980px){.letters-hero{grid-template-columns:1fr}.letters-photo{min-height:430px}}
+@media (max-width:720px){.five-letters{grid-template-columns:1fr}.love-letter{min-height:auto}.sinhala-letter.featured-letter{grid-column:auto}.sinhala-letter.featured-letter p{columns:1}.letters-photo{min-height:390px;border-width:6px}.letters-hero{border-radius:30px}.letters-photo{border-radius:24px}}
+
+
+/* Creative photo entrance */
+.gallery-intro{
+  position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:1.15rem;align-items:stretch;margin:0 auto 1.2rem;
+}
+.album-cover{position:relative;min-height:520px;border-radius:38px;overflow:hidden;box-shadow:var(--shadow);border:10px solid rgba(255,255,255,.72);background:#fff;isolation:isolate}
+.album-cover img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:1.2s transform}
+.album-cover:hover img{transform:scale(1.05)}
+.album-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,5,12,.04),rgba(20,5,12,.58));z-index:1}
+.album-badge{position:absolute;left:22px;right:22px;bottom:22px;z-index:2;color:#fff;font-family:Arial,sans-serif}
+.album-badge small{display:inline-flex;padding:.45rem .7rem;border-radius:999px;background:rgba(255,255,255,.22);backdrop-filter:blur(12px);letter-spacing:.16em;text-transform:uppercase;font-weight:900;font-size:.72rem}
+.album-badge h3{font-family:Georgia,'Times New Roman',serif;font-size:clamp(2rem,4vw,4rem);line-height:.92;letter-spacing:-.05em;margin:.75rem 0 .55rem}
+.album-badge p{max-width:520px;line-height:1.65;color:rgba(255,255,255,.88)}
+.album-copy{position:relative;overflow:hidden;border-radius:38px;padding:clamp(1.4rem,3vw,2.4rem);background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(255,240,245,.78));border:1px solid rgba(255,255,255,.86);box-shadow:0 18px 52px rgba(92,34,54,.10)}
+.album-copy::before{content:"🌹";position:absolute;right:-18px;top:-24px;font-size:8rem;opacity:.13;transform:rotate(18deg)}
+.album-copy h3{font-size:clamp(1.9rem,4vw,3.5rem);line-height:.98;letter-spacing:-.05em;margin:.85rem 0}
+.album-copy p{font-family:Arial,sans-serif;color:var(--muted);line-height:1.8}
+.memory-tags{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.35rem 0}
+.memory-tags span{font:800 .78rem Arial,sans-serif;color:#9d2f58;border:1px solid rgba(190,65,103,.18);background:rgba(255,255,255,.65);border-radius:999px;padding:.58rem .72rem}
+.album-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-top:1rem}
+.album-mini img{height:150px;width:100%;object-fit:cover;border-radius:20px;box-shadow:0 12px 26px rgba(92,34,54,.12);transform:rotate(var(--tilt));border:5px solid rgba(255,255,255,.75);transition:.25s transform}
+.album-mini img:hover{transform:rotate(0) scale(1.04)}
+.rose-divider{display:flex;align-items:center;gap:1rem;margin:1.3rem 0 1.1rem;color:var(--rose);font-family:Arial,sans-serif;font-weight:900;letter-spacing:.16em;text-transform:uppercase;font-size:.78rem}
+.rose-divider::before,.rose-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(190,65,103,.35),transparent)}
+.love-strip{display:flex;gap:.9rem;overflow-x:auto;padding:.25rem .25rem 1.1rem;margin-bottom:1.3rem;scroll-snap-type:x mandatory}
+.love-strip::-webkit-scrollbar{height:8px}
+.love-strip::-webkit-scrollbar-thumb{background:rgba(190,65,103,.28);border-radius:999px}
+.strip-card{position:relative;flex:0 0 190px;height:250px;border:none;border-radius:24px;overflow:hidden;box-shadow:0 14px 34px rgba(92,34,54,.13);background:#fff;scroll-snap-align:start;border:6px solid rgba(255,255,255,.78);transform:rotate(var(--tilt));transition:.25s transform}
+.strip-card:hover{transform:rotate(0) translateY(-5px)}
+.strip-card img{width:100%;height:100%;object-fit:cover}
+.strip-card span{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(255,255,255,.78);backdrop-filter:blur(10px);color:var(--rose);border-radius:999px;padding:.45rem .55rem;font:900 .75rem Arial,sans-serif;text-align:center}
+.cursor-rose{position:fixed;z-index:9999;pointer-events:none;transform:translate(-50%,-50%);animation:roseFade .9s ease forwards;font-size:15px;filter:drop-shadow(0 6px 9px rgba(190,65,103,.18))}
+@keyframes roseFade{0%{opacity:.95;transform:translate(-50%,-50%) scale(.75) rotate(0)}100%{opacity:0;transform:translate(-50%,-120%) scale(1.35) rotate(36deg)}}
+@media (pointer:coarse){.cursor-rose{display:none}}
+
+/* Gallery */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.gallery-card{position:relative;min-height:330px;border:none;border-radius:26px;overflow:hidden;cursor:pointer;background:#fff;box-shadow:0 16px 44px rgba(92,34,54,.14);isolation:isolate;transition:.28s transform,.28s box-shadow}
+.gallery-card:nth-child(1),.gallery-card:nth-child(6),.gallery-card:nth-child(10){grid-row:span 2;min-height:520px}
+.gallery-card:nth-child(3),.gallery-card:nth-child(8){grid-column:span 2}
+.gallery-card:hover{transform:translateY(-6px);box-shadow:0 24px 58px rgba(92,34,54,.20)}
+.gallery-card img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:.45s transform}
+.gallery-card:hover img{transform:scale(1.06)}
+.gallery-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(30,8,16,.62));z-index:1}
+.photo-no{position:absolute;top:15px;left:15px;z-index:2;background:rgba(255,255,255,.78);color:var(--rose);font:900 .85rem Arial,sans-serif;border-radius:999px;padding:.45rem .65rem}
+.photo-title{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;color:#fff;font:800 1.05rem Arial,sans-serif;text-shadow:0 5px 16px rgba(0,0,0,.25)}
+
+/* Reasons */
+.reasons{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+.reason{padding:1.35rem;border-radius:24px;background:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.8);box-shadow:0 15px 36px rgba(92,34,54,.10);min-height:155px;transition:.25s transform}
+.reason:hover{transform:translateY(-5px)}
+.reason b{display:block;color:var(--rose);font:900 1.7rem Arial,sans-serif;margin-bottom:.55rem}
+.reason h3{font-family:Arial,sans-serif;font-size:1rem;margin-bottom:.35rem}
+.reason p{font-family:Arial,sans-serif;color:var(--muted);font-size:.9rem;line-height:1.55}
+
+/* Timeline */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.moment{padding:1.4rem;border-left:3px solid var(--rose-2);border-radius:0 24px 24px 0;background:rgba(255,255,255,.65);box-shadow:0 13px 34px rgba(92,34,54,.08)}
+.moment span{font:900 .8rem Arial,sans-serif;color:var(--rose);letter-spacing:.14em;text-transform:uppercase}
+.moment h3{font-family:Arial,sans-serif;margin:.6rem 0 .45rem}
+.moment p{font-family:Arial,sans-serif;color:var(--muted);line-height:1.65;font-size:.93rem}
+
+/* Countdown */
+.countdown-section{background:linear-gradient(135deg,#421025 0%,#9d2f58 58%,#f5a1bb 100%);color:#fff;overflow:hidden}
+.countdown-section .section-head p,.countdown-section .pill{color:rgba(255,255,255,.83)}
+.countdown-section .pill{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.25)}
+.countdown-section::before{content:"";position:absolute;inset:-50%;background:radial-gradient(circle,rgba(255,255,255,.18) 0 2px,transparent 3px);background-size:45px 45px;animation:stars 18s linear infinite;opacity:.65}
+@keyframes stars{to{transform:translate(45px,45px)}}
+.countdown{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:820px;margin:2rem auto 0}
+.timebox{text-align:center;border:1px solid rgba(255,255,255,.22);border-radius:25px;background:rgba(255,255,255,.12);backdrop-filter:blur(14px);padding:1.35rem}
+.timebox b{display:block;font:900 clamp(2rem,6vw,4rem) Arial,sans-serif;line-height:1}
+.timebox span{font:700 .82rem Arial,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.7)}
+
+/* Final */
+.final-card{position:relative;min-height:620px;border-radius:38px;overflow:hidden;box-shadow:var(--shadow);display:grid;place-items:end start;padding:clamp(1.6rem,5vw,4rem);isolation:isolate}
+.final-card::before{content:"";position:absolute;inset:0;background:url('assets/images/photo-02.jpg') center/cover no-repeat;z-index:-2}
+.final-card::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(38,8,20,.78),rgba(38,8,20,.24),transparent);z-index:-1}
+.final-content{max-width:560px;color:#fff}
+.final-content h2{font-size:clamp(2.5rem,6vw,5.4rem);line-height:.92;letter-spacing:-.06em;margin:.7rem 0 1rem}
+.final-content p{font-family:Arial,sans-serif;color:rgba(255,255,255,.83);line-height:1.8}
+.footer{padding:2rem 0 3rem;text-align:center;color:var(--muted);font-family:Arial,sans-serif;font-size:.92rem}
+
+/* Modal */
+.modal{position:fixed;inset:0;background:rgba(25,6,13,.82);backdrop-filter:blur(12px);z-index:100;display:none;align-items:center;justify-content:center;padding:1.2rem}
+.modal.open{display:flex}
+.modal img{max-width:min(96vw,1100px);max-height:86vh;border-radius:24px;box-shadow:0 30px 90px rgba(0,0,0,.45);background:#fff}
+.close,.prev,.next{position:absolute;border:none;border-radius:999px;background:rgba(255,255,255,.88);color:var(--rose);cursor:pointer;box-shadow:0 13px 35px rgba(0,0,0,.22);font:900 1.1rem Arial,sans-serif}
+.close{top:18px;right:18px;width:46px;height:46px}
+.prev,.next{top:50%;transform:translateY(-50%);width:50px;height:50px}
+.prev{left:18px}.next{right:18px}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(28px);transition:.65s ease}
+.reveal.show{opacity:1;transform:translateY(0)}
+
+@media (max-width:980px){
+  .gallery-intro{grid-template-columns:1fr}
+  .album-cover{min-height:440px}
+  .album-mini img{height:130px}
+  .links{display:none}
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .hero-copy .lead,.date-card{margin-inline:auto}
+  .hero-actions{justify-content:center}
+  .letter-card{grid-template-columns:1fr}
+  .letter-photo{min-height:360px}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .gallery-card,.gallery-card:nth-child(1),.gallery-card:nth-child(6),.gallery-card:nth-child(10){min-height:360px;grid-row:auto}
+  .gallery-card:nth-child(3),.gallery-card:nth-child(8){grid-column:auto}
+  .reasons{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  .album-cover{min-height:430px;border-width:6px;border-radius:30px}
+  .album-copy{border-radius:30px}
+  .album-mini{grid-template-columns:1fr 1fr 1fr}
+  .album-mini img{height:100px;border-width:4px;border-radius:16px}
+  .strip-card{flex-basis:158px;height:220px}
+  .nav{top:10px}
+  .hero{padding-top:6rem}
+  .hero::before{background:linear-gradient(180deg,rgba(255,250,247,.86),rgba(255,250,247,.75))}
+  .hero-bg{background-image:url('assets/images/hero-portrait.jpg');background-position:center top}
+  .hero-photo-wrap{display:none}
+  .title{font-size:clamp(3rem,17vw,4.5rem)}
+  .date-card{grid-template-columns:1fr;text-align:center}
+  .gallery{grid-template-columns:1fr}
+  .gallery-card,.gallery-card:nth-child(1),.gallery-card:nth-child(6),.gallery-card:nth-child(10){min-height:470px}
+  .reasons,.timeline,.countdown{grid-template-columns:1fr}
+  .final-card{min-height:560px;padding:1.4rem}
+  .final-card::after{background:linear-gradient(180deg,transparent 0%,rgba(38,8,20,.83) 72%)}
+  .prev,.next{display:none}
+}
+</style>
+</head>
+<body>
+<div class="orb one"></div><div class="orb two"></div><div class="orb three"></div>
+<div class="petals" id="petals"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo">🌸 Birthday Love</a>
+    <div class="links">
+      <a href="#letter">5 Letters</a><a href="#gallery">Photos</a><a href="#reasons">Love</a><a href="#countdown">Countdown</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <span class="pill">A beautiful surprise · just for you</span>
+      <h1 class="title">Happy Birthday <span class="script">My Curly Girl</span></h1>
+      <p class="lead">Today is not only your birthday. It is the day the world became more beautiful, softer, brighter, and more magical because you came into it.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#letter">Open 5 Love Letters 💌</a>
+        <a class="btn secondary" href="#gallery">See Our Photos 🌷</a>
+      </div>
+      <div class="date-card">
+        <strong>22</strong>
+        <span>June · your special day · loved beyond every word</span>
+      </div>
+    </div>
+    <div class="hero-photo-wrap reveal">
+      <div class="hero-photo"><img src="assets/images/hero-portrait.jpg" alt="Romantic couple portrait"></div>
+      <div class="float-heart">💗</div>
+      <div class="float-card"><b>Forever favorite:</b><br>your smile, your curls, your heart.</div>
+    </div>
+  </div>
+</header>
+
+<section class="section letter-section" id="letter">
+  <div class="container letters-wrap">
+    <div class="section-head reveal">
+      <span class="pill">Five love letters</span>
+      <h2>ඔයා වෙනුවෙන් ලියූ ආදරණීය ලිපි 5ක්</h2>
+      <p class="lead sinhala-letter">රෝස මල් වගේ ලස්සන birthday surprise එකක් — මගේ ආදරණීය කෙල්ලට හදවතින්ම.</p>
+    </div>
+
+    <div class="letters-hero reveal">
+      <div class="letters-photo"><img src="assets/images/photo-06.jpg" alt="Beautiful couple letter cover" loading="lazy"></div>
+      <div class="letters-copy">
+        <span class="pill">Open with love</span>
+        <h2>මගේ ආදරණීය පණට...</h2>
+        <p class="sinhala-letter">මේ ලිපි 5ම ඔයාගේ උපන්දිනය වෙනුවෙන් හදවතින්ම ලියපු ආදරණීය වචන. එක එක ලිපියක් රෝස මලක් වගේ, මතකයක් වගේ, ආදරයක් වගේ.</p>
+        <div class="letter-hint">
+          <span>🌹 Rose mood</span><span>💌 ලිපි 5ක්</span><span>✨ Birthday surprise</span><span>❤️ හැමදාම ඔයාට</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="five-letters" aria-label="Five romantic birthday letters">
+      <article class="love-letter sinhala-letter reveal" style="--tilt:-1.5deg;--bg:url('assets/images/photo-01.jpg')">
+        <span class="letter-number">01</span><span class="letter-stamp">❤️</span>
+        <h3>💌 ලිපිය 01 – මගේ ආදරණීය පණට ❤️</h3>
+        <p>සුභ උපන්දිනයක් මගේ පණ. අද දවස ඔයාගේ ජීවිතයේ තවත් ලස්සන ආරම්භයක් වේවා කියලා මම හදවතින්ම ප්‍රාර්ථනා කරනවා. ඔයා මගේ ජීවිතයට ආපු දවසේ ඉඳන් හැම දෙයක්ම ලස්සන වුණා. මගේ සතුටට හේතුවක් වුණෙත්, මගේ සිනහවට හේතුවක් වුණෙත් ඔයාමයි. අද දවසේ ඔයාගේ හැම හීනයක්ම සැබෑ වෙන්න, හැම බලාපොරොත්තුවක්ම ඉටු වෙන්න කියලා මම ප්‍රාර්ථනා කරනවා. මම හැමදාම ඔයා ළඟ ඉන්නවා. ආදරෙයි පණ. ❤️</p>
+        <span class="mini-sign">ආදරෙයි පණ</span>
+      </article>
+
+      <article class="love-letter sinhala-letter reveal" style="--tilt:1.2deg;--bg:url('assets/images/photo-08.jpg')">
+        <span class="letter-number">02</span><span class="letter-stamp">🌹</span>
+        <h3>💌 ලිපිය 02 – ඔයා මගේ ලෝකය 🌹</h3>
+        <p>මගේ ආදරණීය කෙල්ලේ, ඔයා නැති ලෝකයක් ගැන මට හිතන්නවත් බෑ. ඔයාගේ හිනාව, ඔයාගේ කතා, ඔයාගේ ආදරය මගේ ජීවිතේ ලස්සනම දේවල්. අද ඔයාගේ උපන්දිනය. ඒ නිසා මම එක දෙයක් කියන්න කැමතියි. මගේ ජීවිතේ ලැබුණු වටිනාම තෑග්ග ඔයායි. අද දවසේ ඔයාට ලැබෙන හැම සතුටක්ම ඔයාට වඩාත්ම සුදුසුයි. සුභ උපන්දිනයක් මගේ රත්තරන්. ❤️</p>
+        <span class="mini-sign">මගේ ලෝකය</span>
+      </article>
+
+      <article class="love-letter sinhala-letter reveal" style="--tilt:-.8deg;--bg:url('assets/images/photo-04.jpg')">
+        <span class="letter-number">03</span><span class="letter-stamp">💕</span>
+        <h3>💌 ලිපිය 03 – ස්තූතියි පණ 💕</h3>
+        <p>මගේ ජීවිතේ සතුටින් පුරවපු ඔයාට ස්තූතියි. මම දුකින් ඉන්න වෙලාවට මාව හිනස්සපු ඔයාට ස්තූතියි. මාව විශ්වාස කරපු ඔයාට ස්තූතියි. මගේ අතින් වැරදි වුණත් මාව අතහැරලා නොගිය ඔයාට ස්තූතියි. ඔයා වගේ කෙනෙක් මගේ ජීවිතේ ඉන්න එක මට ලොකු වාසනාවක්. අද දවසේ මම ඔයාට ප්‍රාර්ථනා කරන්නේ හැමදාම සතුටින් ඉන්න කියලයි. සුභ උපන්දිනයක් පණ. ❤️</p>
+        <span class="mini-sign">ස්තූතියි පණ</span>
+      </article>
+
+      <article class="love-letter sinhala-letter reveal" style="--tilt:1.5deg;--bg:url('assets/images/photo-10.jpg')">
+        <span class="letter-number">04</span><span class="letter-stamp">✨</span>
+        <h3>💌 ලිපිය 04 – අපේ අනාගතය ✨</h3>
+        <p>මම හීන දකින්නේ ඔයාත් එක්ක. මම සැලසුම් කරන්නේ ඔයාත් එක්ක. මම ජීවිතේ ඉස්සරහට යන්න හිතන්නේත් ඔයාත් එක්ක. අද ඔයාගේ උපන්දිනයේ මම ප්‍රාර්ථනා කරන්නේ අපි දෙන්නාගේ හැම හීනයක්ම දවසක සැබෑ වෙන්න කියලයි. කාලය කොච්චර වෙනස් වුණත්, තත්වය කොච්චර වෙනස් වුණත්, මගේ හදවතේ ඔයාට තියෙන ආදරේ කවදාවත් වෙනස් වෙන්නේ නෑ. ආදරෙයි මගේ කෙල්ලේ. ❤️</p>
+        <span class="mini-sign">අපේ අනාගතය</span>
+      </article>
+
+      <article class="love-letter sinhala-letter featured-letter reveal" style="--tilt:-1.2deg;--bg:url('assets/images/photo-12.jpg')">
+        <span class="letter-number">05</span><span class="letter-stamp">❤️🌹</span>
+        <h3>💌 ලිපිය 05 – හැමදාම ඔයාට ❤️</h3>
+        <p>සුභ උපන්දිනයක් මගේ ලස්සන කෙල්ලේ. ඔයාගේ ජීවිතේ හැම දවසක්ම අද වගේම ලස්සන වෙන්න කියලා මම ප්‍රාර්ථනා කරනවා. ඔයාගේ ඇස්වල කඳුළු වෙනුවට සිනහව පිරෙන්නත්, දුක වෙනුවට සතුට පිරෙන්නත්, බිය වෙනුවට විශ්වාසය පිරෙන්නත් කියලා මම හදවතින්ම ප්‍රාර්ථනා කරනවා. මගේ ජීවිතේ ලස්සනම කතාවේ ප්‍රධාන චරිතය ඔයායි. මම හැමදාම ඔයාට ආදරෙයි. අදත්, හෙටත්, හැමදාමත්. ❤️🌹</p>
+        <span class="mini-sign">අදත්, හෙටත්, හැමදාමත්</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="pill">Our beautiful couple photos</span>
+      <h2>Moments that look like a love story</h2>
+      <p class="lead">Before the full photo wall, I added a romantic album preview with rose details, mini memories, and a more creative photo experience. Tap any photo to open it full screen.</p>
+    </div>
+
+    <div class="gallery-intro reveal" id="photoIntro">
+      <div class="album-cover">
+        <img src="assets/images/photo-12.jpg" alt="Romantic couple album cover" loading="lazy">
+        <div class="album-badge">
+          <small>Before the photo wall</small>
+          <h3>Our rose album begins here.</h3>
+          <p>A soft, premium entrance before the gallery — made with your most beautiful couple moments.</p>
+        </div>
+      </div>
+      <div class="album-copy">
+        <span class="pill">Photo section upgrade</span>
+        <h3>A little love story before every picture.</h3>
+        <p>Each photo now feels like part of a romantic birthday album: soft roses, floating memories, beautiful transitions, and a full-screen preview for every frame.</p>
+        <div class="memory-tags">
+          <span>🌹 Rose cursor</span><span>✨ Album preview</span><span>💌 Romantic mood</span><span>📱 Mobile friendly</span>
+        </div>
+        <button class="btn" id="openBestPhoto" type="button">Open Best Photo 🌹</button>
+        <div class="album-mini" aria-label="Small couple photo previews">
+          <img src="assets/images/thumb-06.jpg" alt="Mini romantic photo one" style="--tilt:-3deg" loading="lazy">
+          <img src="assets/images/thumb-08.jpg" alt="Mini romantic photo two" style="--tilt:2deg" loading="lazy">
+          <img src="assets/images/thumb-04.jpg" alt="Mini romantic photo three" style="--tilt:-1.5deg" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="rose-divider reveal"><span>🌹 Swipe the rose memories 🌹</span></div>
+    <div class="love-strip reveal" aria-label="Creative horizontal couple photo strip">
+      <button class="strip-card" data-open="5" style="--tilt:-2deg"><img src="assets/images/thumb-06.jpg" alt="Pure joy preview" loading="lazy"><span>Pure joy</span></button>
+      <button class="strip-card" data-open="7" style="--tilt:2deg"><img src="assets/images/thumb-08.jpg" alt="Little dance preview" loading="lazy"><span>Little dance</span></button>
+      <button class="strip-card" data-open="3" style="--tilt:-1deg"><img src="assets/images/thumb-04.jpg" alt="Proposal smile preview" loading="lazy"><span>Proposal smile</span></button>
+      <button class="strip-card" data-open="0" style="--tilt:1.5deg"><img src="assets/images/thumb-01.jpg" alt="Forever frame preview" loading="lazy"><span>Forever frame</span></button>
+      <button class="strip-card" data-open="10" style="--tilt:-2.5deg"><img src="assets/images/thumb-11.jpg" alt="White arch love preview" loading="lazy"><span>White arch love</span></button>
+      <button class="strip-card" data-open="1" style="--tilt:2.5deg"><img src="assets/images/thumb-02.jpg" alt="Softest kiss preview" loading="lazy"><span>Softest kiss</span></button>
+    </div>
+
+    <div class="gallery" id="galleryWall">
+      <button class="gallery-card reveal" data-full="assets/images/photo-01.jpg" aria-label="Open photo 1">
+  <img src="assets/images/thumb-01.jpg" alt="Beautiful couple photo - forehead kiss" loading="lazy">
+  <span class="photo-no">01</span>
+  <span class="photo-title">Forever frame</span>
+</button>
+<button class="gallery-card reveal" data-full="assets/images/photo-02.jpg" aria-label="Open photo 2">
+  <img src="assets/images/thumb-02.jpg" alt="Beautiful couple photo - walking together" loading="lazy">
+  <span class="photo-no">02</span>
+  <span class="photo-title">Softest kiss</span>
+</button>
+<button class="gallery-card reveal" data-full="assets/images/photo-03.jpg" aria-label="Open photo 3">
+  <img src="assets/images/thumb-03.jpg" alt="Beautiful couple photo - proposal kiss" loading="lazy">
+  <span class="photo-no">03</span>
+  <span class="photo-title">Promise moment</span>
+</button>
+<button class="gallery-card reveal" data-full="assets/images/photo-04.jpg" aria-label="Open photo 4">
+  <img src="assets/images/thumb-04.jpg" alt="Beautiful couple photo - proposal moment" loading="lazy">
+  <span class="photo-no">04</span>
+  <span class="photo-title">Proposal smile</span>
+</button>
+<button class="gallery-card reveal" data-full="assets/images/photo-05.jpg" aria-label="Open photo 5">
+  <img src="assets/images/thumb-05.jpg" alt="Beautiful couple photo - garden look back" loading="lazy">
+  <span class="photo-no">05</span>
+  <span class="photo-title">Garden glance</span>
+</button>
+<button class="gallery-card reveal" data-full="assets/images/photo-06.jpg" aria-label="Open photo 6">
+  <img src="assets/images/thumb-06.jpg" alt="Beautiful couple photo - couple portrait" loading="lazy">
+  <span class="photo-no">06</span>
+  <span class="photo-title">Pure joy</span>
+</button>
+<button class="gallery-card reveal" data-full="assets/images/photo-07.jpg" aria-label="Open photo 7">
+  <img src="assets/images/thumb-07.jpg" alt="Beautiful couple photo - close garden moment" loading="lazy">
+  <span class="photo-no">07</span>
+  <span class="photo-title">Close to you</span>
+</button>
+<button class="gallery-card reveal" data-full="assets/images/photo-08.jpg" aria-label="Open photo 8">
+  <img src="assets/images/thumb-08.jpg" alt="Beautiful couple photo - twirl in garden" loading="lazy">
+  <span class="photo-no">08</span>
+  <span class="photo-title">Little dance</span>
+</button>
+<button class="gallery-card reveal" data-full="assets/images/photo-09.jpg" aria-label="Open photo 9">
+  <img src="assets/images/thumb-09.jpg" alt="Beautiful couple photo - stair hand moment" loading="lazy">
+  <span class="photo-no">09</span>
+  <span class="photo-title">Hold my hand</span>
+</button>
+<button class="gallery-card reveal" data-full="assets/images/photo-10.jpg" aria-label="Open photo 10">
+  <img src="assets/images/thumb-10.jpg" alt="Beautiful couple photo - stair walking moment" loading="lazy">
+  <span class="photo-no">10</span>
+  <span class="photo-title">First steps</span>
+</button>
+<button class="gallery-card reveal" data-full="assets/images/photo-11.jpg" aria-label="Open photo 11">
+  <img src="assets/images/thumb-11.jpg" alt="Beautiful couple photo - white arch portrait" loading="lazy">
+  <span class="photo-no">11</span>
+  <span class="photo-title">White arch love</span>
+</button>
+<button class="gallery-card reveal" data-full="assets/images/photo-12.jpg" aria-label="Open photo 12">
+  <img src="assets/images/thumb-12.jpg" alt="Beautiful couple photo - first hero wide" loading="lazy">
+  <span class="photo-no">12</span>
+  <span class="photo-title">Classic portrait</span>
+</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="reasons">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="pill">Reasons I love you</span>
+      <h2>Ten little truths about you</h2>
+      <p class="lead">Small reasons, big feelings, and a heart full of gratitude.</p>
+    </div>
+    <div class="reasons">
+      <div class="reason reveal"><b>01</b><h3>Your smile</h3><p>It changes my whole mood in one second.</p></div>
+      <div class="reason reveal"><b>02</b><h3>Your curls</h3><p>They make you look unforgettable and so beautifully you.</p></div>
+      <div class="reason reveal"><b>03</b><h3>Your heart</h3><p>You love with kindness, care, and honesty.</p></div>
+      <div class="reason reveal"><b>04</b><h3>Your laugh</h3><p>It feels like the happiest sound in my world.</p></div>
+      <div class="reason reveal"><b>05</b><h3>Your eyes</h3><p>They speak even before you say anything.</p></div>
+      <div class="reason reveal"><b>06</b><h3>Your energy</h3><p>You make every day feel more alive.</p></div>
+      <div class="reason reveal"><b>07</b><h3>Your softness</h3><p>You make love feel peaceful and safe.</p></div>
+      <div class="reason reveal"><b>08</b><h3>Your beauty</h3><p>Inside and outside, you are a whole blessing.</p></div>
+      <div class="reason reveal"><b>09</b><h3>Your support</h3><p>You make me want to become better every day.</p></div>
+      <div class="reason reveal"><b>10</b><h3>You</h3><p>Because no reason is bigger than simply being you.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="pill">Our story so far</span>
+      <h2>From one moment to forever</h2>
+    </div>
+    <div class="timeline">
+      <div class="moment reveal"><span>First chapter</span><h3>The day I noticed you</h3><p>Everything felt different. One smile, one look, and the world became softer.</p></div>
+      <div class="moment reveal"><span>Favorite chapter</span><h3>Every conversation</h3><p>Time moved too fast whenever I was with you. I never wanted those moments to end.</p></div>
+      <div class="moment reveal"><span>Today</span><h3>Your birthday</h3><p>A day to celebrate your life, your beauty, and the happiness you bring to mine.</p></div>
+      <div class="moment reveal"><span>Forever</span><h3>More memories coming</h3><p>More walks, more photos, more little jokes, more dreams, more us.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section countdown-section" id="countdown">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="pill">Counting down</span>
+      <h2>To June 22nd 🎂</h2>
+      <p class="lead">Every second closer to your special day.</p>
+    </div>
+    <div class="countdown reveal" aria-label="Birthday countdown">
+      <div class="timebox"><b id="days">00</b><span>Days</span></div>
+      <div class="timebox"><b id="hours">00</b><span>Hours</span></div>
+      <div class="timebox"><b id="minutes">00</b><span>Minutes</span></div>
+      <div class="timebox"><b id="seconds">00</b><span>Seconds</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container final-card reveal">
+    <div class="final-content">
+      <span class="pill">My favorite person</span>
+      <h2>Happy Birthday, My Curly Girl.</h2>
+      <p>You are loved more than these words can hold. May this year bring you peace, beauty, success, and every little dream you keep in your heart.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">Made with love · June 22nd · Always & forever 🌹</footer>
+
+<div class="modal" id="photoModal" aria-hidden="true">
+  <button class="close" id="closeModal" aria-label="Close">✕</button>
+  <button class="prev" id="prevPhoto" aria-label="Previous photo">‹</button>
+  <img id="modalImg" alt="Full screen couple photo">
+  <button class="next" id="nextPhoto" aria-label="Next photo">›</button>
+</div>
+
+<script>
+// petals
+const petals = document.getElementById('petals');
+const petalIcons = ['🌸','🌷','💗','🌹'];
+for(let i=0;i<34;i++){
+  const p=document.createElement('span');
+  p.className='petal';
+  p.textContent=petalIcons[i%petalIcons.length];
+  p.style.left=Math.random()*100+'vw';
+  p.style.animationDuration=(9+Math.random()*10)+'s';
+  p.style.animationDelay=(-Math.random()*12)+'s';
+  p.style.setProperty('--drift',(Math.random()*140-70)+'px');
+  p.style.fontSize=(13+Math.random()*16)+'px';
+  petals.appendChild(p);
+}
+
+// rose cursor trail for desktop
+let lastRoseTrail=0;
+const roseTrailIcons=['🌹','🌸','✨'];
+document.addEventListener('pointermove',(e)=>{
+  if(window.matchMedia('(pointer: coarse)').matches) return;
+  const now=Date.now();
+  if(now-lastRoseTrail<75) return;
+  lastRoseTrail=now;
+  const rose=document.createElement('span');
+  rose.className='cursor-rose';
+  rose.textContent=roseTrailIcons[Math.floor(Math.random()*roseTrailIcons.length)];
+  rose.style.left=e.clientX+'px';
+  rose.style.top=e.clientY+'px';
+  document.body.appendChild(rose);
+  setTimeout(()=>rose.remove(),900);
+});
+
+// reveal on scroll
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('show'); });
+}, {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// gallery modal
+const modal=document.getElementById('photoModal');
+const modalImg=document.getElementById('modalImg');
+const cards=[...document.querySelectorAll('.gallery-card')];
+let current=0;
+function openPhoto(i){
+  current=i;
+  modalImg.src=cards[current].dataset.full;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+  document.body.classList.add('no-scroll');
+}
+function closePhoto(){
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  document.body.classList.remove('no-scroll');
+}
+function movePhoto(step){ openPhoto((current+step+cards.length)%cards.length); }
+cards.forEach((card,i)=>card.addEventListener('click',()=>openPhoto(i)));
+document.querySelectorAll('.strip-card').forEach(card=>{
+  card.addEventListener('click',()=>openPhoto(Number(card.dataset.open || 0)));
+});
+const openBestPhoto=document.getElementById('openBestPhoto');
+if(openBestPhoto){ openBestPhoto.addEventListener('click',()=>openPhoto(5)); }
+document.getElementById('closeModal').addEventListener('click',closePhoto);
+document.getElementById('prevPhoto').addEventListener('click',()=>movePhoto(-1));
+document.getElementById('nextPhoto').addEventListener('click',()=>movePhoto(1));
+modal.addEventListener('click',e=>{ if(e.target===modal) closePhoto(); });
+document.addEventListener('keydown',e=>{
+  if(!modal.classList.contains('open')) return;
+  if(e.key==='Escape') closePhoto();
+  if(e.key==='ArrowLeft') movePhoto(-1);
+  if(e.key==='ArrowRight') movePhoto(1);
+});
+
+// birthday countdown: always targets the next June 22
+function getNextBirthday(){
+  const now=new Date();
+  let year=now.getFullYear();
+  let target=new Date(year,5,22,0,0,0);
+  if(now>target) target=new Date(year+1,5,22,0,0,0);
+  return target;
+}
+const target=getNextBirthday();
+function updateCountdown(){
+  const now=new Date();
+  let diff=target-now;
+  if(diff<0) diff=0;
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff%86400000/3600000);
+  const m=Math.floor(diff%3600000/60000);
+  const s=Math.floor(diff%60000/1000);
+  document.getElementById('days').textContent=String(d).padStart(2,'0');
+  document.getElementById('hours').textContent=String(h).padStart(2,'0');
+  document.getElementById('minutes').textContent=String(m).padStart(2,'0');
+  document.getElementById('seconds').textContent=String(s).padStart(2,'0');
+}
+updateCountdown(); setInterval(updateCountdown,1000);
+</script>
+</body>
+</html>
